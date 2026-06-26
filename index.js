@@ -10,8 +10,13 @@
  * @example
  * echo("test", 1); // "test"
  */
+
 export function echo(word, n) {
-  // TODO
+  let result = ""
+  for(let i = 0; i < n; i++) {
+    result = result + word
+  }
+  return result
 }
 
 /**
@@ -27,8 +32,13 @@ export function echo(word, n) {
  * echoWithSpace("test", 1); // "test"
  */
 export function echoWithSpace(word, n) {
-  // TODO
-}
+  let result = ""
+  for (let i=0; i < n; i++) {
+    result= result + word + " "
+  }
+  return result 
+} 
+//console.log(echoWithSpace("badger", 3))
 
 /**
  * @param {number} n - The number to stop at
@@ -42,8 +52,12 @@ export function echoWithSpace(word, n) {
  * sumTo(100); // 5050
  */
 export function sumTo(n) {
-  // TODO
-}
+  let result = 0
+  for (let i=1; i <= n; i++) {
+    result= result+i
+  }
+  return result 
+} 
 
 /**
  * @param {number} a - The starting integer.
@@ -58,7 +72,11 @@ export function sumTo(n) {
  * sumFromTo(2, 2); // 2
  */
 export function sumFromTo(a, z) {
-  // TODO
+  let result = 0
+  for (let i=a; i<=z; i++) {
+    result = result+i
+  }
+  return result;
 }
 
 /**
@@ -73,7 +91,11 @@ export function sumFromTo(a, z) {
  * countdown(5); // logs 5, 4, 3, 2, 1
  */
 export function countdown(n) {
-  // TODO
+  let result = 0 
+  for (let i=n; i>=1; i--){
+    console.log(i);
+  }
+  return result 
 }
 
 /**
@@ -88,7 +110,13 @@ export function countdown(n) {
  * sumOddsToN(1); // 1
  */
 export function sumOddsToN(n) {
-  // TODO
+  let result = 0 
+  for (let i=1; i<=n; i++){
+    if (i%2===1){
+      result = result +i
+    }
+  }
+  return result 
 }
 
 /**
@@ -108,8 +136,22 @@ export function sumOddsToN(n) {
  * getGrowthTime(5, 78); // 80
  */
 export function getGrowthTime(start, target) {
-  // TODO
+  if (start <= 0) {
+    return undefined;
+  }
+  let result = 0;
+  for (let i = 0; i <= 20; i++) {
+    if (start * 2 ** i >= target) {
+      result = i * 20;
+      break;
+    }
+  }
+  return result;
 }
+
+// console.log(getGrowthTime(1, 8));
+// console.log(getGrowthTime(2,78));
+// console.log(getGrowthTime(5,78));
 
 /**
  * The amount of money in a savings account grows by a certain rate every year.
@@ -128,7 +170,17 @@ export function getGrowthTime(start, target) {
  * getCompoundTime(30000, 0.04, 50000); // 14
  */
 export function getCompoundTime(start, rate, target) {
-  // TODO
+ if (rate <= 0 || start <= 0) {
+    return undefined;
+}
+  let result = 0;
+  for (let i=0; i<=20; i++){
+    if (start * (1 + rate) ** i >= target) {
+      result = i;
+      break;
+    }
+  }
+  return result;
 }
 
 /**
@@ -154,7 +206,16 @@ export function getCompoundTime(start, rate, target) {
  * moveWater(7, 3); // 1
  */
 export function moveWater(colander, bucket) {
-  // TODO
+  let total = 0;
+  let trips = 0;
+
+  while (total < bucket) {
+    total = total + colander;
+    colander = Math.max(colander - 1, 1);
+    trips = trips + 1;
+  }
+
+  return trips;
 }
 
 /**
@@ -174,5 +235,15 @@ export function moveWater(colander, bucket) {
  * fizzbuzz(15); // logs 1, 2, fizz, 4, buzz, fizz, 7, 8, fizz, buzz, 11, fizz, 13, 14, fizzbuzz
  */
 export function fizzbuzz(n) {
-  // TODO
+  for (let i = 1; i <= n; i++) {
+    if (i % 15 === 0) {
+      console.log("fizzbuzz");
+    } else if (i % 3 === 0) {
+      console.log("fizz");
+    } else if (i % 5 === 0) {
+      console.log("buzz");
+    } else {
+      console.log(i);
+    }
+  }
 }
